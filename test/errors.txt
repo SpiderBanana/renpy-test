@@ -1,0 +1,14 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 103: expected statement.
+    def inject_js_into_index_html():
+                                 ^
+
+File "game/script.rpy", line 123: expected statement.
+    inject_js_into_index_html()
+                               ^
+
+Ren'Py Version: Ren'Py 8.1.0.23051307
+Sun Mar  3 14:09:42 2024
