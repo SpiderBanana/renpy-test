@@ -1,13 +1,12 @@
-﻿# Déclare le script Python à utiliser dans Ren'Py
-init python:
+﻿init python:
     def submit_to_google_forms(first_name, last_name, favorite_color):
         js_code = f"submitToGoogleForms('{first_name}', '{last_name}', '{favorite_color}');"
         renpy.emscripten.run_script(js_code)
 
 # Début du jeu
 label start:
-    scene bg room
-    with fade
+    scene background
+    show character3 with dissolve
 
     "Bienvenue dans notre questionnaire !"
 
@@ -16,6 +15,10 @@ label start:
     $ first_name = renpy.input("Entrez votre prénom : ").strip()
     if first_name == "":
         $ first_name = "Anonyme"
+
+    # Transition vers le nouveau fond et personnage avec animation
+    scene background2 with fade
+    show character2 with dissolve
 
     # Collecte du nom de famille
     "Quel est votre nom de famille ?"
@@ -31,14 +34,12 @@ label start:
         "Bleu":
             $ favorite_color = "Bleu"
 
-    # Confirmation des réponses
-    "Merci pour vos réponses !"
-    "Prénom : [first_name]"
-    "Nom de famille : [last_name]"
-    "Couleur préférée : [favorite_color]"
-
     # Appelle la fonction Python pour soumettre les réponses
     $ submit_to_google_forms(first_name, last_name, favorite_color)
 
     "Vos réponses ont été soumises. Merci !"
+
+    # Animation de fin avant de quitter
+    scene black with fade
+    "Fin du questionnaire."
     return
